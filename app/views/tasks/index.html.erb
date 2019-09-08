@@ -3,6 +3,7 @@
 <p>ログイン完了ユーザ: 
 <%= current_user.name %>
 </p>
+<%= link_to 'Logout', logout_path, method: :delete %>
   <div class="row">
     <aside class="col-sm-4">
       
@@ -10,11 +11,11 @@
 
         <div class="form-group">
           
-<%= f.text_field :status, class: 'form-control', rows: 5 %>
-<%= f.text_field :content, class: 'form-control', rows: 5 %>
+<p>ステータス<%= f.text_field :status, class: 'form-control', rows: 5 %></p>
+<p>タスク<%= f.text_field :content, class: 'form-control', rows: 5 %></p>
         </div>
         
-<%= f.submit 'Post' %>
+<%= f.submit '作成' %>
 
       
 <% end %>
