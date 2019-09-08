@@ -1,5 +1,5 @@
 <ul class="list-unstyled">
-  
+
 <% tasks.each do |task| %>
 
     <li class="media mb-3">
@@ -7,15 +7,17 @@
       <div class="media-body">
         <div>
           
-<%= link_to task.user.name, user_path(task.user) %>
+
  <span class="text-muted">posted at 
 <%= task.created_at %>
 </span>
         </div>
-       <div><%= link_to task, task_path(task) %>
+
  <span class="text-muted">posted at 
 <%= task.created_at %></div>
-        <div>
+ <div>
+
+        <%= link_to task.id, task %>
           <p><%= task.status %></p>
           <p><%= task.content %></p>
         </div>
@@ -26,7 +28,7 @@
 
 <% end %>
         </div>
-        
+       
       </div>
     </li>
   
