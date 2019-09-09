@@ -1,40 +1,28 @@
 <ul class="list-unstyled">
-
-<% tasks.each do |task| %>
-
-    <li class="media mb-3">
-      <img class="mr-2 rounded" src="<%= gravatar_url(task.user, { size: 50 }) %>" alt="">
-      <div class="media-body">
-        <div>
-          
-
- <span class="text-muted">posted at 
-<%= task.created_at %>
-</span>
-        </div>
-
- <span class="text-muted">posted at 
-<%= task.created_at %></div>
- <div>
-
-        <%= link_to task.id, task %>
-          <p><%= task.status %></p>
-          <p><%= task.content %></p>
-        </div>
-      <div>
-          
-<% if current_user == task.user %>
-<%= link_to "Delete", task, method: :delete, data: { confirm: "You sure?" }  %>
-
-<% end %>
-        </div>
-       
-      </div>
-    </li>
-  
-<% end %>
-
-  
-<%= paginate tasks %>
-
+    <% tasks.each do |task| %>
+        <li class="media mb-3">
+            <img class="mr-2 rounded" src="<%= gravatar_url(task.user, { size: 50 }) %>" alt="">
+            <div class="media-body">    
+                <span class="text-muted">
+                    posted at 
+                    <%= task.created_at %>
+                </span>
+                <span class="text-muted">
+                    posted at 
+                    <%= task.created_at %>
+                </span>
+            </div>
+            <div>
+                <%= link_to task.id, task %>
+                <p><%= task.status %></p>
+                <p><%= task.content %></p>
+            </div>
+            <div>
+                <% if current_user == task.user %>
+                    <%= link_to "Delete", task, method: :delete, data: { confirm: "You sure?" }  %>
+                <% end %>
+            </div>
+        </li>
+    <% end %>
+    <%= paginate tasks %>
 </ul>

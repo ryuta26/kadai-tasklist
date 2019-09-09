@@ -1,42 +1,33 @@
-
 <% if logged_in? %>
-<p>ログイン完了ユーザ: 
-<%= current_user.name %>
-</p>
-<%= link_to 'Logout', logout_path, method: :delete %>
+  <p>ログイン完了ユーザ:<%= current_user.name %></p>
+  <%= link_to 'Logout', logout_path, method: :delete %>
+  
   <div class="row">
     <aside class="col-sm-4">
-      
-<%= form_with(model: @task, local: true) do |f| %>
-
+      <%= form_with(model: @task, local: true) do |f| %>
         <div class="form-group">
-          
-<p>ステータス<%= f.text_field :status, class: 'form-control', rows: 5 %></p>
-<p>タスク<%= f.text_field :content, class: 'form-control', rows: 5 %></p>
+          <p>
+            ステータス
+            <%= f.text_field :status, class: 'form-control' %>
+          </p>
+          <p>
+            タスク
+            <%= f.text_field :content, class: 'form-control' %>
+          </p>
         </div>
-        
-<%= f.submit '作成' %>
-
-      
-<% end %>
-
+        <%= f.submit '作成' %>
+      <% end %>
     </aside>
     <div class="col-sm-8">
-<%= render 'tasks/tasks', tasks: @tasks %>
-
+      <%= render 'tasks/tasks', tasks: @tasks %>
     </div>
-
-
   </div>
 <% else %>
-
   <div class="center jumbotron">
     <div class="text-center">
       <h1>Welcome to the tasks</h1>
-      
-<%= link_to 'Log in now!', login_path %>
-<%= link_to 'Sign up now!', signup_path %>
-
+      <%= link_to 'Log in now!', login_path %>
+      <%= link_to 'Sign up now!', signup_path %>
     </div>
   </div>
 <% end %>
